@@ -27,7 +27,10 @@ module Hurl
                            :scopes       => '',
                            :callback_url => '/login/callback/' }
 
-    register ::Sinatra::Auth::Github
+    use Rack::Auth::Basic, "Wanna come in? Really?" do |username, password|
+      username == ENV['HTACCESS_USERNAME'] and password == ENV['HTACCESS_PASSWORD']
+    end
+
 
     def initialize(*args)
       super
@@ -41,11 +44,13 @@ module Hurl
     #
 
     before do
-      if authenticated?
-        @user = User.new(github_user)
-      end
-
       @flash = session.delete('flash')
+
+      # only allow https
+      uri = request.env["REQUEST_URI"]
+      if uri['heroku'] && !uri['https://']
+        redirect not_found
+      end
     end
 
     get '/' do
