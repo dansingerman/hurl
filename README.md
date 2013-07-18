@@ -8,6 +8,7 @@ Now Hurl is an open source project for your enjoyment.
 
 Note: This fork adds an htaccess username password, and if running on heroku, only allows https. In case you want to do something not 100% public.
 
+To get it working on Heroku I had to do this: http://stackoverflow.com/questions/14856468/https-github-com-twilio-hurl-and-heroku
 
 Installation
 ------------
