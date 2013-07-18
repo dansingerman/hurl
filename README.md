@@ -6,6 +6,8 @@ Now Hurl is an open source project for your enjoyment.
 
 <http://hurl.it/>
 
+Note: This fork adds an htaccess username password, and if running on heroku, only allows https. In case you want to do something not 100% public.
+
 
 Installation
 ------------
